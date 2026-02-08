@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+################################ Couche 01: Stockage ################################
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: dq_user
+      POSTGRES_PASSWORD: dq_pass
+      POSTGRES_DB: dq_db
+    ports:
+      - "5433:5432"          # port externe 5433 pour éviter les conflits avec un Postgres local
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dq_net
+
+# La couche 02 et 03 à mettre ici (Jupyter/Evidently, Great Expectations)
+
+################################ Couche 04: Visualisation ################################
+  superset:
+    image: apache/superset:latest-dev
+    depends_on:
+      - postgres
+    environment:
+      SUPERSET_SECRET_KEY: "superset_secret_key_change_me"
+      SUPERSET_LOAD_EXAMPLES: "no"
+      SUPERSET_ADMIN_USERNAME: "admin"
+      SUPERSET_ADMIN_PASSWORD: "admin"
+      SUPERSET_ADMIN_FIRSTNAME: "DQ"
+      SUPERSET_ADMIN_LASTNAME: "Admin"
+      SUPERSET_ADMIN_EMAIL: "admin@example.com"
+    ports:
+      - "8088:8088"
+    volumes:
+      - superset_home:/app/superset_home
+    networks:
+      - dq_net
+
+volumes:
+  postgres_data:       # Données persistantes PostgreSQL
+  superset_home:       # Données/config Superset
+
+networks:
+  dq_net:
+    driver: bridge
