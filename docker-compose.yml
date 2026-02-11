@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-################################ Couche 01: Stockage ################################
+######################### Couche 1: Stockage des données avec PostgreSQL#########################
   postgres:
     image: postgres:16
     environment:
@@ -9,15 +9,15 @@ services:
       POSTGRES_PASSWORD: dq_pass
       POSTGRES_DB: dq_db
     ports:
-      - "5433:5432"          # port externe 5433 pour éviter les conflits avec un Postgres local
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+      - ./data:/data
     networks:
       - dq_net
 
-# La couche 02 et 03 à mettre ici (Jupyter/Evidently, Great Expectations)
-
-################################ Couche 04: Visualisation ################################
+######################### Couche 4: Visualisation avec Superset#########################
   superset:
     image: apache/superset:latest-dev
     depends_on:
@@ -34,12 +34,14 @@ services:
       - "8088:8088"
     volumes:
       - superset_home:/app/superset_home
+      - ./superset-entrypoint.sh:/app/superset-entrypoint.sh
+    command: ["/bin/sh", "/app/superset-entrypoint.sh"]
     networks:
       - dq_net
 
 volumes:
-  postgres_data:       # Données persistantes PostgreSQL
-  superset_home:       # Données/config Superset
+  postgres_data:
+  superset_home:
 
 networks:
   dq_net:
