@@ -17,6 +17,19 @@ services:
     networks:
       - dq_net
 
+######################### Couche 2 : Exploration et profiling des données ######################
+  exploration:
+    build: ./exploration
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://dq_user:dq_pass@postgres:5432/dq_db
+      OUTPUT_PATH: /exploration/html
+    volumes:
+      - ./exploration/html:/exploration/html
+    networks:
+      - dq_net
+
 ######################### Couche 4: Visualisation avec Superset#########################
   superset:
     image: apache/superset:latest-dev
