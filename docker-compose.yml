@@ -36,7 +36,7 @@ services:
     depends_on:
       - postgres
     environment:
-      SUPERSET_SECRET_KEY: "superset_secret_key_change_me"
+      SUPERSET_SECRET_KEY: "b97MuSm/H12Cq2Oc1xR6BuIfUzY0RHCIlcL6yfKUft/y0aUkb/ZEdZDO"
       SUPERSET_LOAD_EXAMPLES: "no"
       SUPERSET_ADMIN_USERNAME: "admin"
       SUPERSET_ADMIN_PASSWORD: "admin"
