@@ -1,0 +1,76 @@
+name*,displayName,description,owner,tags,glossaryTerms,tiers,certification,retentionPeriod,sourceUrl,domains,extension,entityType*,fullyQualifiedName,column.dataTypeDisplay,column.dataType,column.arrayDataType,column.dataLength,storedProcedure.code,storedProcedure.language
+consultations_raw,,<p>Cette table contient l'ensemble des informations relatives aux consultations enregistrées dans le système entre les patients et les professionnels de santé.</p>,user:aithassouelias57,,,Tier.Tier1,Certification.Bronze,,,Gestion hospitalière,,table,dq_db.dq_db.public.consultations_raw,,,,,,
+patientid,,<p>Identifiant technique unique du patient</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.consultations_raw.patientid,text,TEXT,,1
+staffid,,<p>Identifiant technique unique du personnel</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.consultations_raw.staffid,text,TEXT,,1
+consultationdate,,<p>Date de la consultation</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.consultations_raw.consultationdate,date,DATE,,1
+consultationtime,,<p>Horaire de la consultation</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.consultations_raw.consultationtime,time without time zone,TIME,,1
+description,,<p>Description du personnel de santé concernant cette consultation</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.consultations_raw.description,text,TEXT,,1
+patients_raw,,"<p>Cette table contient les informations administratives et cliniques des patients hospitalisés. Elle centralise les données d'identification, de localisation, de séjour (dates, service) et de contact des patients.</p>",user:aithassouelias57,,,Tier.Tier1,Certification.Bronze,,,Gestion hospitalière,,table,dq_db.dq_db.public.patients_raw,,,,,,
+patient_id,,<p>Identifiant technique unique du patient</p>,,PII.NonSensitive,,,,,,,,column,dq_db.dq_db.public.patients_raw.patient_id,text,TEXT,,1
+name,,<p>Nom complet du patient</p>,,PII.Sensitive;PersonalData.Personal,,,,,,,,column,dq_db.dq_db.public.patients_raw.name,text,TEXT,,1
+age,,<p>Âge du patient en années</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.patients_raw.age,double precision,DOUBLE,,1
+arrival_date,,<p>Date d'admission du patient à l'hôpital</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.patients_raw.arrival_date,date,DATE,,1
+departure_date,,<p>Date de sortie du patient de l'hôpital</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.patients_raw.departure_date,date,DATE,,1
+service,,<p>Service médical d'affectation</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.patients_raw.service,text,TEXT,,1
+satisfaction,,<p>Score de satisfaction du patient (0-100)</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.patients_raw.satisfaction,double precision,DOUBLE,,1
+adresse_postale,,<p>Adresse postale complète du patient</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.patients_raw.adresse_postale,text,TEXT,,1
+code_postal,,<p>Code postal du patient</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.patients_raw.code_postal,text,TEXT,,1
+genre,,<p>Genre déclaré du patient</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.patients_raw.genre,text,TEXT,,1
+date_naissance,,<p>Date de naissance du patient</p>,,PersonalData.Personal,,,,,,,,column,dq_db.dq_db.public.patients_raw.date_naissance,date,DATE,,1
+telephone,,<p>Numéro de téléphone du patient</p>,,PII.Sensitive;PersonalData.Personal,,,,,,,,column,dq_db.dq_db.public.patients_raw.telephone,text,TEXT,,1
+email,,<p>Adresse email professionnelle ou personnelle du patient</p>,,PII.Sensitive;PersonalData.Personal,,,,,,,,column,dq_db.dq_db.public.patients_raw.email,text,TEXT,,1
+numero_dossier_medical,,<p>Numéro unique de dossier médical</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.patients_raw.numero_dossier_medical,text,TEXT,,1
+services_weekly_raw,,"<p>Table de suivi hebdomadaire des capacités et de la demande par service hospitalier (lits disponibles, demandes, admissions, refus, satisfaction patients et moral du personnel)</p>",user:aithassouelias57,,,Tier.Tier2,Certification.Gold,,,Gestion hospitalière,,table,dq_db.dq_db.public.services_weekly_raw,,,,,,
+week,,<p>Numéro de semaine dans l’année (1–52) pour laquelle les indicateurs sont calculés.</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.week,integer,INT,,1
+month,,"<p>Numéro de mois (1–12) correspondant à la semaine, pour faciliter l’agrégation mensuelle.</p>",,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.month,integer,INT,,1
+service,,<p>Nom du service hospitalier concerné</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.service,text,TEXT,,1
+availablebeds,,<p>Nombre de lits disponibles dans le service pour la semaine considérée.</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.availablebeds,integer,INT,,1
+patientsrequest,,<p>Nombre total de demandes/admissions sollicitées par les patients pour ce service et cette semaine</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.patientsrequest,integer,INT,,1
+patientsadmitted,,<p>Nombre de patients effectivement admis dans le service sur la semaine</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.patientsadmitted,integer,INT,,1
+patientsrefused,,"<p>Nombre de patients refusés (capacité insuffisante, critères médicaux, etc.) pour la semaine</p>",,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.patientsrefused,integer,INT,,1
+patientsatisfaction,,<p>Score moyen de satisfaction patient (0–100) pour le service et la semaine</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.patientsatisfaction,integer,INT,,1
+staffmorale,,<p>Score moyen de moral du personnel (0–100) pour le service et la semaine</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.staffmorale,integer,INT,,1
+event,,<p>Événement contextuel impactant la semaine</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.services_weekly_raw.event,text,TEXT,,1
+staff_raw,,"<p>Cette table contient les informations administratives et professionnelles du personnel soignant de l'établissement (médecins et infirmiers). Elle centralise les données d'identification, de contact, démographiques et organisationnelles (service, département).</p>",user:aithassouelias57,,,Tier.Tier1,Certification.Bronze,,,Gestion hospitalière,,table,dq_db.dq_db.public.staff_raw,,,,,,
+staff_id,,<p>Identifiant technique unique du personnel</p>,,PII.NonSensitive,,,,,,,,column,dq_db.dq_db.public.staff_raw.staff_id,text,TEXT,,1
+staff_name,,<p>Nom complet du professionnel de santé</p>,,PII.Sensitive;PersonalData.Personal,,,,,,,,column,dq_db.dq_db.public.staff_raw.staff_name,text,TEXT,,1
+role,,<p>Fonction exercée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_raw.role,text,TEXT,,1
+service,,<p>Service médical d'affectation</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_raw.service,text,TEXT,,1
+adresse_postale,,<p>Adresse postale complète du professionnel</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.staff_raw.adresse_postale,text,TEXT,,1
+code_postal,,<p>Code postal du professionnel</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_raw.code_postal,text,TEXT,,1
+genre,,<p>Genre déclaré</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_raw.genre,text,TEXT,,1
+date_naissance,,<p>Date de naissance du professionnel</p>,,PII.Sensitive;PersonalData.Personal,,,,,,,,column,dq_db.dq_db.public.staff_raw.date_naissance,date,DATE,,1
+age,,<p>Âge du professionnel en années</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_raw.age,double precision,DOUBLE,,1
+telephone,,<p>Numéro de téléphone professionnel ou personnel</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.staff_raw.telephone,text,TEXT,,1
+email,,<p>Adresse email professionnelle</p>,,PII.Sensitive,,,,,,,,column,dq_db.dq_db.public.staff_raw.email,text,TEXT,,1
+departement,,<p>Département médical rattaché</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_raw.departement,text,TEXT,,1
+staff_schedule_raw,,"<p>Cette table contient les informations relatives aux agendas de chaque personnel de l'hôpital. Pour chaque semaine de l'année, nous avons l'information si un personnel de l'hôpital est présent ou absent.</p>",user:aithassouelias57,,,Tier.Tier1,Certification.Bronze,,,,,table,dq_db.dq_db.public.staff_schedule_raw,,,,,,
+week,,<p>Numéro de la semaine dans une année</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_schedule_raw.week,integer,INT,,1
+staff_id,,<p>Identifiant technique unique du personnel</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_schedule_raw.staff_id,text,TEXT,,1
+staff_name,,<p>Nom complet du professionnel de santé</p>,,PII.Sensitive;PersonalData.Personal,,,,,,,,column,dq_db.dq_db.public.staff_schedule_raw.staff_name,text,TEXT,,1
+role,,<p>Fonction exercée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_schedule_raw.role,text,TEXT,,1
+service,,<p>Service médical d'affectation</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_schedule_raw.service,text,TEXT,,1
+present,,"<p>1 si le personnel est présent, sinon 0</p>",,PII.None,,,,,,,,column,dq_db.dq_db.public.staff_schedule_raw.present,integer,INT,,1
+superset_validation_metrics,,"<p>Cette table est propre à l'équipe informatique de l'hôpital, elle regroupe des indicateurs de qualité de données des autres tables.</p>",user:aithassouelias57,,,Tier.Tier4,Certification.Gold,,,Gestion informatique,,table,dq_db.dq_db.public.superset_validation_metrics,,,,,,
+id,,<p>Identifiant technique unique de la vérification</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.id,integer,INT,,1
+table_name,,<p>Nom de la table contrôlée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.table_name,character varying(100),VARCHAR,,100
+pilier,,<p>Pilier de qualité concerné</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.pilier,character varying(50),VARCHAR,,50
+regle,,<p>Identifiant de la règle de qualité appliquée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.regle,character varying(200),VARCHAR,,200
+colonne,,<p>Nom de la colonne de la table source sur laquelle la règle est appliquée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.colonne,character varying(200),VARCHAR,,200
+date_run,,<p>Date et heure d’exécution du contrôle de qualité</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.date_run,timestamp without time zone,TIMESTAMP,,1
+passed,,<p>Nombre de lignes satisfaisant la règle pour cette table/colonne/date d’exécution</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.passed,bigint,BIGINT,,1
+failed,,<p>Nombre de lignes ne respectant pas la règle pour cette table/colonne/date d’exécution</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.failed,bigint,BIGINT,,1
+pct_succes,,<p>Pourcentage de lignes passées avec succès</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.pct_succes,"numeric(6,2)",NUMERIC,,1
+erreurs,,<p>Commentaire ou code d’erreur associé à la règle</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.superset_validation_metrics.erreurs,text,TEXT,,1
+validation_history,,"<p>Cette table est propre à l'équipe informatique de l'hôpital, elle regroupe un historique des indicateurs de qualité de données des autres tables.</p>",user:aithassouelias57,,,Tier.Tier4,Certification.Gold,,,Gestion informatique,,table,dq_db.dq_db.public.validation_history,,,,,,
+id,,<p>Identifiant technique unique</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.id,integer,INT,,1
+table_name,,<p>Nom de la table contrôlée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.table_name,character varying(100),VARCHAR,,100
+column_name,,<p>Nom de la colonne de la table source sur laquelle la règle est appliquée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.column_name,character varying(200),VARCHAR,,200
+run_date,,<p>Date et heure d’exécution du contrôle de qualité</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.run_date,timestamp without time zone,TIMESTAMP,,1
+pilier,,<p>Pilier de qualité concerné</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.pilier,character varying(50),VARCHAR,,50
+rule_name,,<p>Règle de qualité appliquée</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.rule_name,character varying(200),VARCHAR,,200
+checks_passed,,<p>Nombre de lignes satisfaisant la règle pour cette table/colonne/date d’exécution</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.checks_passed,bigint,BIGINT,,1
+checks_failed,,<p>Nombre de lignes ne respectant pas la règle pour cette table/colonne/date d’exécution</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.checks_failed,bigint,BIGINT,,1
+success_rate,,<p>Pourcentage de lignes passées</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.success_rate,"numeric(6,2)",NUMERIC,,1
+error_type,,<p>Commentaire ou code d’erreur associé à la règle</p>,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.error_type,character varying(200),VARCHAR,,200
+total_expectations,,,,PII.None,,,,,,,,column,dq_db.dq_db.public.validation_history.total_expectations,bigint,BIGINT,,1
