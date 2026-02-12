@@ -52,9 +52,19 @@ services:
     networks:
       - dq_net
 
+######################### Couche 5: Data Catalog avec OpenMetaData #########################
+
+
+######################### Couche 6: Orchestration avec AirFlow #########################
+
+
+
+############################# Volumes et Réseaux #############################  
 volumes:
   postgres_data:
   superset_home:
+  openmetadata_db_data:
+
 
 networks:
   dq_net:

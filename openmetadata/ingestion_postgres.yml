@@ -1,0 +1,19 @@
+source:
+  type: "postgres"
+  serviceName: "postgres_local"
+  serviceConnection:
+    hostPort: "postgres:5432"
+    username: "dq_user"
+    password: "dq_pass"
+    database: "dq_db"
+    scheme: "postgresql"
+  database: "dq_db"
+
+sink:
+  type: "metadata-rest"
+  config:
+    server: "http://openmetadata_server:8585/api"
+
+workflowConfig:
+  openMetadataServerConfig:
+    hostPort: "http://openmetadata_server:8585/api"

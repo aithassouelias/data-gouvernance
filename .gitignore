@@ -210,3 +210,7 @@ __marimo__/
 
 # Le répertoire des données 
 data/
+
+# Les volumes Docker
+docker-volume/
+**/docker-volume/
