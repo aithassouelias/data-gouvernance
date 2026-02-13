@@ -74,7 +74,7 @@ Cette commande lance :
 - Profiling des données (couche 2) : 
     - Les fichiers HTML de profiling automatique sont dans le dossier : ```exploration/html```
 
-- Apache Superset (couche 3)
+- Apache Superset (couche 4)
 
     - URL : http://localhost:8088
     - Login par défaut : admin / admin
@@ -86,6 +86,7 @@ Cette commande lance :
 
     - URL : http://localhost:9000
     - Login: Ces informations ont été fournies par email au professeur, sinon créer un nouveau compte OpenMetadata.
+    - Les métadonnées de la base de données sont exportées dans le fichier ```openmetadata/db_data_catalog.csv```, celles-ci peuvent être importées dans l'outil si besoin
 
 ## Contributeurs
 - Abdeljebbar ABID
