@@ -25,11 +25,12 @@
 
 2. Git cloné en local :
 
-bash
-git clone
-cd data-gouvernance
+```
+git clone https://github.com/aithassouelias/data-gouvernance.git
+```
 
 3. Créer le dossier data à la racine (copie des fichiers CSV/SQL de test) :
 
-bash
-mkdir data
+``` 
+mkdir data 
+```
