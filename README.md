@@ -22,7 +22,7 @@ Projet de mise en place d’une **plateforme de data gouvernance** pour un envir
    - Conteneur `exploration` (Python) qui se connecte à `dq_db` et génère des rapports HTML de profilage dans `exploration/html`.
 
 3. **Couche 3 – Contrôle qualité avec Great Expectations**  
-   - Conteneur `exploration` (Python) qui se connecte à `dq_db` et génère des rapports HTML de profilage dans `exploration/html`.
+   - Tableau de règles de qualité automatisées s’appuyant sur Great Expectations pour vérifier la complétude, la cohérence et l’exactitude des principales tables (patients, staff, consultations, indicateurs) et produire des rapports/données exploitables dans le reste de la plateforme.
 
 4. **Couche 4 – Visualisation (Superset)**  
    - Apache Superset pour créer les dashboards sur les données hospitalières et les indicateurs de qualité.
