@@ -26,7 +26,6 @@ FROM '/data/patients.csv'
 DELIMITER ','
 CSV HEADER;
 
-
 TRUNCATE TABLE staff_raw;
 
 COPY staff_raw (
