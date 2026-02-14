@@ -27,27 +27,37 @@ Cette commande lance :
 - OpenMetadata (serveur + DB + ingestion).
 
 ### 1. Démarrer PostgreSQL 
-``` docker compose up -d postgres ```
+``` 
+docker compose up -d postgres
+ ```
 
 
 ### 2. Exécuter la Couche 2 : Profiling 
-```docker compose up exploration```
+```
+docker compose up exploration
+```
 Rapports générés dans ./exploration/html/*.html
 
 ### 3. Exécuter la Couche 3 : Validation Qualité 
-``` docker compose up validation```
+``` 
+docker compose up validation
+```
 Livrables générés :
-    • ./results/validation_history.csv
-    • ./results/superset_validation_metrics.csv
-    • ./data/validation_history.csv (dupliqué)
-    • ./data/superset_validation_metrics.csv (dupliqué)
-    • ./reports/gx_data_docs/rapport_validation_qualite.html
+    • /results/validation_history.csv
+    • /results/superset_validation_metrics.csv
+    • /data/validation_history.csv (dupliqué)
+    • /data/superset_validation_metrics.csv (dupliqué)
+    • /reports/gx_data_docs/rapport_validation_qualite.html
 
 ### 4. Démarrer Superset (service permanent - mode détaché)
-``` docker compose up -d superset```
+``` 
+docker compose up -d superset
+```
 
 ### 5.  Démarrer OpenMetadata
-```docker compose -f docker-compose.yml -f docker-compose-openmetadata.yml up -d openmetadata```
+```
+docker compose -f docker-compose.yml -f docker-compose-openmetadata.yml up -d openmetadata
+```
 
 
 ## 🌐 Accès aux outils
