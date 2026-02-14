@@ -30,6 +30,20 @@ services:
     networks:
       - dq_net
 
+######################### Couche 3 : Validation Qualité avec Great Expectations ################
+  validation:
+    build: ./validation
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://dq_user:dq_pass@postgres:5432/dq_db
+    volumes:
+      - ./results:/app/results
+      - ./reports:/app/reports
+      - ./data:/data
+    networks:
+      - dq_net
+
 ######################### Couche 4: Visualisation avec Superset#########################
   superset:
     image: apache/superset:latest-dev
