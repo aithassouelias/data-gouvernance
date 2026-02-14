@@ -10,7 +10,8 @@ Projet de mise en place d’une **plateforme de data gouvernance** pour un envir
 - 🐘 **PostgreSQL** – stockage des données opérationnelles.
 - 📊 **Apache Superset** – dashboards et visualisation des indicateurs.
 - 📚 **OpenMetadata** – Data catalog, domaines, RGPD, Tiers, niveaux de qualité des données d'une table.
-- 🐍 **Python** – Scripts d’exploration/profilage des données.
+- 🐍 **Python** – Scripts d’exploration/profilage des données -**Validation Qualité Python/Pandas** – pipeline programmatique des 6 piliers
+v.
 
 ---
 ## 🏗️ Architecture logique – 5 couches
@@ -63,6 +64,30 @@ Cette commande lance :
 - le conteneur d’exploration,
 - Superset,
 - OpenMetadata (serveur + DB + ingestion).
+
+- # 1. Démarrer PostgreSQL 
+docker compose up -d postgres
+
+# 2. Attendre 15 secondes que PostgreSQL soit prêt
+
+# 3. Exécuter la Couche 2 : Profiling 
+docker compose up exploration
+# → Rapports générés dans ./exploration/html/*.html
+
+# 4. Exécuter la Couche 3 : Validation Qualité
+docker compose up validation
+# → Livrables générés :
+#    • ./results/validation_history.csv
+#    • ./results/superset_validation_metrics.csv
+#    • ./data/validation_history.csv 
+#    • ./data/superset_validation_metrics.csv 
+#    • ./reports/gx_data_docs/rapport_validation_qualite.html
+
+# 5. Démarrer Superset
+docker compose up -d superset
+
+# 6.  Démarrer OpenMetadata
+docker compose -f docker-compose.yml -f docker-compose-openmetadata.yml up -d openmetadata
 
 ## 🌐 Accès aux outils
 
