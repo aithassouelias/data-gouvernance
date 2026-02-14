@@ -1,0 +1,10 @@
+openmetadata_ingestion:
+  image: docker.getcollate.io/openmetadata/ingestion:1.10.9
+  depends_on:
+    - openmetadata_server
+  volumes:
+    - ./openmetadata:/app  
+  environment:
+    OM_HOST_URL: http://openmetadata_server:8585/api
+  networks:
+    - dq_net
