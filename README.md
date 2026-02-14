@@ -49,7 +49,7 @@ Livrables générés :
     • /data/superset_validation_metrics.csv (dupliqué)
     • /reports/gx_data_docs/rapport_validation_qualite.html
 
-### 4. Démarrer Superset (service permanent - mode détaché)
+### 4. Démarrer Superset 
 ``` 
 docker compose up -d superset
 ```
