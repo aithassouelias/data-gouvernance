@@ -43,11 +43,17 @@ Rapports générés dans ./exploration/html/*.html
 docker compose up validation
 ```
 Livrables générés :
+
     - /results/validation_history.csv,
+    
     - /results/superset_validation_metrics.csv,
+    
     - /data/validation_history.csv (dupliqué),
+    
     - /data/superset_validation_metrics.csv (dupliqué),
+    
     - /reports/gx_data_docs/rapport_validation_qualite.html.
+    
 
 ### 4. Démarrer Superset 
 ``` 
