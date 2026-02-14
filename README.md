@@ -75,11 +75,17 @@ Cette commande lance :
     - Les fichiers HTML de profiling automatique sont dans le dossier : ```exploration/html```
 
 - Apache Superset (couche 4)
-
-    - URL : http://localhost:8088
-    - Login par défaut : admin / admin
-    - URL de connexion SQLAlchemy à utiliser dans Superset : ```postgresql://dq_user:dq_pass@postgres:5432/dq_db```
-    - Ceci permet à Superset d’accéder à la base dq_db du conteneur postgres.
+  - URL : `http://localhost:8088`
+  - Identifiants par défaut : `admin / admin`
+  - Connexion PostgreSQL (Settings → Databases → + Database → SQLAlchemy URI) :
+    - `postgresql://dq_user:dq_pass@postgres:5432/dq_db`
+  - Cette connexion permet à Superset d’accéder à la base `dq_db` du conteneur `postgres`.
+  - Import du dashboard de data quality :
+    - Télécharger `Dashboard-export.zip` depuis le dépôt GitHub
+    - Aller dans **Dashboards → Import Dashboard**
+    - Cliquer sur **Select file** et choisir `Dashboard-export.zip`
+    - Valider pour recréer le tableau de bord
+  - Les captures d’écran du dashboard sont disponibles dans le répertoire `Captures_Dashboard` du dépôt.
 
 
 - OpenMetadata (couche 5) : 
