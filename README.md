@@ -16,7 +16,9 @@ mkdir data
 
 ## ▶️ Démarrage des services
 
-``` docker compose -f docker-compose.yml -f docker-compose-openmetadata.yml up -d``` 
+``` 
+docker compose -f docker-compose.yml -f docker-compose-openmetadata.yml up -d
+``` 
 Cette commande lance :
 
 - l’instance Postgres (dq_db),
