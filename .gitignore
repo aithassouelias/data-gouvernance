@@ -211,6 +211,14 @@ __marimo__/
 # Le répertoire des données 
 data/
 
+# Fichiers générés par la couche 2 (profiling)
+exploration/html/*.html
+
+# Fichiers générés par la couche 3 (validation)
+results/*.csv
+data/*.csv
+reports/gx_data_docs/*.html
+
 # Les volumes Docker
 docker-volume/
 **/docker-volume/
